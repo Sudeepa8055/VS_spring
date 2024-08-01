@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS_pro</title>
+    <style>
+        #a1{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border: 2px solid black;
+            height: 97vh;
+            /* width: 100vw; */
+            flex-wrap: wrap;
+            background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=pexels-pixabay-235985.jpg&fm=jpg");
+            background-blend-mode: inherit;
+        }
+        #b,#d,#e{
+            /* border: 2px solid black; */
+            height: 100px;
+            width: 150px;  
+            padding: 10px;
+        }
+        #c{
+            height: 100px;
+            width: 200px;  
+            padding: 10px;
+        }
+        #f{
+            height: 200px;
+            width: 200px;  
+            padding: 10px; 
+            padding-bottom: 25px;
+            
+        }
+        button:hover{
+            background-color: rgb(116, 169, 230);
+        }
+    </style>
+</head>
+<body>
+    <div id="a1">
+
+   <!-- GENERATE OTP -->
+<div id="b" align="center" >
+    <a href="otp"><button >C L I C K</button></a>
+    <br> <br>
+    <aside th:if="${otp}" th:text="'OTP is : '+${otp}" style="border: 2px solid black; padding: 5px;"></aside>
+</div>
+
+  <!-- GENERATE COIN TOSS -->
+<div id="c">
+    <a href="/toss"><button>T O S S</button></a>
+    <br> <br>
+    <span th:if="${toss}"
+      th:text="'Coin Tossed and it is : '+${toss}" style="border: 2px solid black; padding: 5px;" > </span>
+  </div>
+
+   <!-- GENERATE RANDOM COLOR -->
+  <div id="d">
+    <a href="/random-color"><button>C O L O R</button></a>
+    <br><br>
+    <div
+      th:if="${color}"
+      th:style="'height: 100px;width: 100px;border: 2px solid black;background-color: '+${color}" > </div>
+  </div>
+
+   <!-- GENERATE MESSAGE -->
+  <div id="e">
+    <form action="/wish">
+      <input type="text" name="message" placeholder="Enter Message" />
+      <br><br>
+      <input type="color" name="color" /><br><br>
+      <button>Done</button><br><br>
+      <input
+        th:if="${message}"
+        th:style="'color:'+${color1}"
+        th:value="${message}"
+        type="text"
+      />
+    </form>
+  </div>
+
+   <!-- GENERATE CALCULATOR -->
+  <div style="border: 2px solid black;" id="f">
+    <form action="/calci">
+        <h6>CALCULATOR</h6>
+      <input th:value="${num1}" type="number" name="num1" style="padding: 2px;"> <br><br>
+      <input th:value="${num2}" type="number" name="num2" style="padding: 2px;">
+      <br><br>
+      <button name="operation" value="add">+</button>
+      <button name="operation" value="sub">-</button>
+      <button name="operation" value="mul">X</button>
+      <button name="operation" value="div">/</button>
+    </form>
+    <br>
+    <input type="text" th:value="${ans}" name="answer"  style="padding: 2px;">
+  </div>
+
+    </div>
+</body>
+</html>
